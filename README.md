@@ -213,7 +213,9 @@ Use qsub program to submit the job script to the cluster
 qsub -N variant-annotation -q normal.c <path-to-project-install>/VariantAnnoation.sh
 ```
 
-This script perform additional refinement to the variant call and genotyping steps to remove unreliable genotype records (GQ < 20).  These records are marked first using GATK's VariantFiltration tool and after that they are set to no-call (./.) using vcftools --minGQ 20.
+This script perform additional refinement to the variant call and genotyping steps to remove unreliable genotype records (GQ < 20).  These filtered records are marked and set to no-call (./.)  using GATK's VariantFiltration tool. We only filter on GQ to disqualify variants where we have too few samples with reasonable-quality genotypes. After this step, we re-annotate each remaining variants using all available metrics provided by the GATK's VariantAnnotator tool and SNPEff program.
+
+A final set of calls with genotypes is then provided to the analyst. This set contains the filtered calls where we have observed SNP call rate > 80% across the analysed sample of 24 individuals.
 
 
 ## Built With
