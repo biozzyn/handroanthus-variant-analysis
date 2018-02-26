@@ -55,36 +55,43 @@ git clone https://github.com/biozzyn/handroanthus-variant-analysis.git
 
 Assuming all the required dependencies are successfully installed in your local system you can proceed to download the data used as input for the pipeline.
 
+#### Data directory structure
+
+Under the project structure there is a directory named ``data``. The analyst shoud copy the whole directory to a local place acessible to the cluster system and run the ``setup.sh`` to initiate the download of the fastq from the NCBI's SRA repo
 
 ```
-until finished
+cp -r data <absolute-path-to-data>
+cd <absolute-path-to-data>
+bash setup.sh
 ```
+This setup script creates a recommended directory structure that is arranged heirarchically with the read files sequence within it. For example:
 
-End with an example of getting some data out of the system or using it for a little demo
+``
+<absolute-path-to-data>/
+          <LIBRARY-NAME>_<RUN-ID>/
+                <LIBRARY-NAME>_<RUN-ID>-<SAMPLE-NAME>_0.fastq.gz
+``
 
-## Running the tests
+In our manuscript we described a first Capture-Seq library using fragments of DNA captured by 30,795 probes in the sample of 24 individuals of H. impetiginosus. These fragments were sequenced in a single sequencing run in one lane of a HiSeq2000 instrument, single-end mode. These sequence data will be available whithin a directory named HIMP1_1.
 
-Explain how to run the automated tests for this system
+We described also a second Capture-Seq library for a partially replicate set using fragments of DNA captured by 14,135 probes out of the original set of 30,795 probeset.These fragments were sequenced in a single sequencing run in one lane of a HiSeq2000 instrument, single-end mode. These sequence data will be available whithin a directory named HIMP2_1.
 
-### Break down into end to end tests
+#### Sequence assembly
 
-Explain what these tests test and why
+Under the project structure there is a directory named ``genome``. The analyst shoud copy the whole directory to a local place acessible to the cluster system and run the ``setup.sh`` to initiate the download of the multi-fasta from the NCBI's Genbank repo.
 
-```
-Give an example
-```
+``
+cp -r genome <absolute-path-to-genome>
+cd <absolute-path-to-genome>
+bash setup.sh
+``
 
-### And coding style tests
+This setup script uses ``wget`` program to download the sequence assembly and modify the sequence header for further processing.
 
-Explain what these tests test and why
+### Running the pipeline
 
-```
-Give an example
-```
 
-## Deployment
 
-Add additional notes about how to deploy this on a live system
 
 ## Built With
 
