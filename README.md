@@ -2,7 +2,7 @@
 
 Targeted sequence capture coupled to high-throughput sequencing has become a powerful method for the study of genome-wide sequence variation in non-model genomes. Following the recent availability of a genome sequence assembly for the Pink Ipê tree (Handroanthus impetiginosus) that appears in GigaScience Jounal (2018), we reported the development of a set of 24,751 capture probes for single nucleotide polymorphisms (SNPs) characterization and genotyping across 18,216 distinct loci, sampling more than 10 Mbp of the species genome. This system identifies nearly 200,000 SNPs located inside or in close proximity to almost 14,000 annotated protein-coding genes, generating quality genotypic data in populations spanning wide geographic distances across the species native range.
 
-This is the project containing all scripts written and used by the "Design and evaluation of a sequence capture system for genome-wide SNP genotyping of a keystone Neotropical hardwood tree genome" paper published in DNA Research Journal (2018). The pipeline uses freely available software, standard tools, and takes fastq data and a genome assembly sequence as primary inputs. All data are available from NCBI's publicly repositories. 
+This is the project containing all scripts written and used by the "Design and evaluation of a sequence capture system for genome-wide SNP genotyping of a keystone Neotropical hardwood tree genome" paper to appear in DNA Research Journal (2018). The pipeline uses freely available software, standard tools, and takes fastq data and a genome assembly sequence as primary inputs. All data are available from NCBI's publicly repositories. 
 
 Briefly, the pipeline guides the user through the following analysis:
 
