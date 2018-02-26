@@ -24,15 +24,22 @@ Additional resources used by the pipeline are available to the analyst under the
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+Included pipeline scripts require a successful install of various open-source tools used for variant analysis. See Dependencies herein. Additionaly, the analyst will need to install the scripts provided by the International Cassava Genetic Map Consortium (ICGMC) available [here](https://bitbucket.org/rokhsar-lab/gbs-analysis).
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+Please see the Install section of [IGGMC](https://bitbucket.org/rokhsar-lab/gbs-analysis) repository to get information on how to obtain the necessary code and configure your local system to run analysis 1 & 2 in this pipeline.
+
+Additionaly, the analyst should observe that all the required softwares are accessible via the user's PATH environment variable. For the GATK, SNPEff, PICARD programs we used the following entries in our Bash startup file ``.bashrc``
 
 ```
-Give examples
+PICARD="~/my_tools/picard/picard.jar"
+GATK="~/my_tools/gatk/GenomeAnalysisTK.jar"
+SNPEFF="~/my_tools/snpeff/snpEff.jar"
 ```
+
+More detailed information on how to setup necessary programs to run a variant analysis pipeline using GATK is accessible [here](https://gatkforums.broadinstitute.org/gatk/discussion/2899/howto-install-all-software-packages-required-to-follow-the-gatk-best-practices)
+
 
 ### Installing
 
