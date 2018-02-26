@@ -222,30 +222,23 @@ A final set of calls with genotypes is then provided to the analyst. This set co
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+### Sequence data QC, Alignment and Processing
+* [ICGMC](https://bitbucket.org/rokhsar-lab/gbs-analysis) - The International Cassava Genetic Map Consortium (ICGMC) Pipeline for preprocessing of Illumina-sequenced data.
 
-## Contributing
+### Variant and Genotype Calling/Annotation/Filtering
+* [GATK](https://software.broadinstitute.org/gatk/best-practices) - Genome Analysis Toolkit
+Variant Discovery in High-Throughput Sequencing Data.
+* [VCFtools](https://vcftools.github.io) - A set of tools written in Perl and C++ for working with VCF files.
+* [Samtools/BCFtools](http://www.htslib.org) - A suite of programs for interacting with high-throughput sequencing data
+* [SnpEff] (http://snpeff.sourceforge.net) - Genomic variant annotations and functional effect prediction toolbox.
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+## Citation
+* To appear in Silva-Junior OB, Novaes E, Grattapaglia D, Collevatti R. Design and evaluation of a sequence capture system for genome-wide SNP genotyping of a keystone Neotropical hardwood tree genome. DNA Research (2018)
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+* **Orzenil B Silva-Junior** - *Github initial setup* - [biozzyn](https://github.com/biozzyn/handroanthus-variant-analysis)
 
 ## Acknowledgments
 
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
+* We acknowledge all the anonymous reviewers and the Editor at DNA Research for contributions
