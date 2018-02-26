@@ -57,41 +57,95 @@ Assuming all the required dependencies are successfully installed in your local 
 
 ### Data directory structure
 
-Under the project structure there is a directory named ``data``. The analyst shoud copy the whole directory to a local place acessible to the cluster system and run the ``setup.sh`` to initiate the download of the fastq from the NCBI's SRA repo
+Under the project structure there is a directory named ``data``. The analyst shoud copy the content of the directory to a local acessible to the cluster system and run the ``setup.sh`` to initiate the download of the fastq from the NCBI's SRA repo
 
 ```
-cp -r data <absolute-path-to-data>
-cd <absolute-path-to-data>/data
+mkdir <absolute-path-to-data>
+cp -r data/* <absolute-path-to-data>/
+cd <absolute-path-to-data>
 bash setup.sh
 ```
-This setup script creates a recommended directory structure that is arranged heirarchically with the read files sequence within it. For example:
+This setup script uses the program ``fastq-dump`` whithin the NCBI SRA Toolkit package to download the fastq files for the experiments. It creates a recommended directory structure that is arranged hierarchically with the read files sequence within it. For example:
 
-``
+```
 <absolute-path-to-data>/
-                        <LIBRARY-NAME>_<RUN-ID>/
-                                               <LIBRARY-NAME>_<RUN-ID>-<SAMPLE-NAME>_0.fastq.gz
-``
+          <LIBRARY-NAME>_<RUN-ID>/
+                 <LIBRARY-NAME>_<RUN-ID>-<SAMPLE-NAME>_0.fastq.gz
+```
 
 In our manuscript we described a first Capture-Seq library using fragments of DNA captured by 30,795 probes in the sample of 24 individuals of H. impetiginosus. These fragments were sequenced in a single sequencing run in one lane of a HiSeq2000 instrument, single-end mode. These sequence data will be available whithin a directory named HIMP1_1.
 
 We described also a second Capture-Seq library for a partially replicate set using fragments of DNA captured by 14,135 probes out of the original set of 30,795 probeset.These fragments were sequenced in a single sequencing run in one lane of a HiSeq2000 instrument, single-end mode. These sequence data will be available whithin a directory named HIMP2_1.
 
+After this step is completed two new directories ``HIMP1_1`` and ``HIMP2_1`` should be created each one containing 24 fastq files named as above.
+
 ### Sequence assembly
 
-Under the project structure there is a directory named ``genome``. The analyst shoud copy the whole directory to a local place acessible to the cluster system and run the ``setup.sh`` to initiate the download of the multi-fasta from the NCBI's Genbank repo.
+Under the project structure there is a directory named ``genome``. The analyst shoud copy the content of the directory to a local acessible to the cluster system and run the ``setup.sh`` to initiate the download of the multi-fasta from the NCBI's Genbank repo.
 
-``
-cp -r genome <absolute-path-to-genome>
-
-cd <absolute-path-to-genome>/genome
-
+```
+mkdir <absolute-path-to-genome>
+cp -r genome/* <absolute-path-to-genome>
+cd <absolute-path-to-genome>
 bash setup.sh
-``
+```
 
-This setup script uses ``wget`` program to download the sequence assembly and modify the sequence header for further processing.
+This setup script uses ``wget`` program to download the sequence assembly and modify the sequence header for further processing. There should be a file named ``genome.fasta`` after this step is completed.
 
 ## Running the pipeline
 
+To run the pipeline, the analyst shoud create a directory for the analysis. This directory should be accessible to the cluster. After that copy the the whole directories HIMP-1 and HIMP-2 under the project files.
+
+```
+mkdir <path-to-analysis>
+cp -r <path-to-project-install>/HIMP-1 <path-to-analysis>/
+cp -r <path-to-project-install>/HIMP-2 <path-to-analysis>/
+```
+
+The analysist should prepare the manifest file ``manifest.txt`` to reflect the actual placement of the input fastq. For example:
+
+```
+ls -1 <absolute-path-to-data>/HIMP1_1/*.fastq.gz > <path-to-analysis>/HIMP-1/manifest.txt
+ls -1 <absolute-path-to-data>/HIMP2_1/*.fastq.gz > <path-to-analysis>/HIMP-2/manifest.txt
+```
+
+To execute steps 1 & 2 in the pipeline, run:
+
+For the library/run HIMP1_1:
+
+```
+<path-to-project-install>/preprocessing.sh \
+  --workdir <path-to-analysis>/HIMP-1 \
+  --datadir <absolute-path-to-data> \
+  --lib-name HIMP1_1 \
+  --sample-file <path-to-analysis>/HIMP-1/samples.tsv \
+  --target-analysis <path-to-IGGMC-analysis-tool> \
+  --adaptor-fasta <path-to-project-install>/share/adaptors_illumina.fa \
+  --ref-genome <absolute-path-to-genome>/genome.fasta \
+  --sequence-source Handroanthus_impetiginosus \
+  --flowcell-id C2THMACXX \
+  --flowcell-lane 2 \
+  --manifest <path-to-analysis>/HIMP-1//manifest.txt \
+  --max-runtime 08:00:00
+```
+
+For the library/run HIMP2_1:
+
+```
+<path-to-project-install>/preprocessing.sh \
+  --workdir <path-to-analysis>/HIMP-2 \
+  --datadir <absolute-path-to-data> \
+  --lib-name HIMP2_1 \
+  --sample-file <path-to-analysis>/HIMP-2/samples.tsv \
+  --target-analysis <path-to-IGGMC-analysis-tool> \
+  --adaptor-fasta <path-to-project-install>/share/adaptors_illumina.fa \
+  --ref-genome <absolute-path-to-genome>/genome.fasta \
+  --sequence-source Handroanthus_impetiginosus \
+  --flowcell-id C2Y14ACXX \
+  --flowcell-lane 6 \
+  --manifest <path-to-analysis>/HIMP-1//manifest.txt \
+  --max-runtime 08:00:00
+```
 
 
 
