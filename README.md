@@ -48,14 +48,14 @@ More detailed information on how to setup necessary programs to run a variant an
 Create a directory to clone the project files into. Remember that this directory should be accessible to your local cluster environment. For example:
 
 ```
-mkdir <path-to-project-install>
+cd <path-to-your-local-install>
 ```
 Assuming Git is correctly installed on your system, simply invoke:
 
 ```
-cd <path-to-project-install>
 git clone https://github.com/biozzyn/handroanthus-variant-analysis.git
 ```
+The directory <path-to-your-local-install>/handroanthus-variant-analysis will be referred hereafter as ``<path-to-project-install>``
 
 ## Configuring your installation
 
@@ -115,6 +115,8 @@ ls -1 <absolute-path-to-data>/HIMP1_1/*.fastq.gz > <path-to-analysis>/HIMP-1/man
 ls -1 <absolute-path-to-data>/HIMP2_1/*.fastq.gz > <path-to-analysis>/HIMP-2/manifest.txt
 ```
 
+### Preprocessing (automated step using [IGGMC](https://bitbucket.org/rokhsar-lab/gbs-analysis))
+
 To execute steps 1 & 2 in the pipeline, run:
 
 For the library/run HIMP1_1:
@@ -155,7 +157,54 @@ For the library/run HIMP2_1:
 
 If all the analysis ran successfully the analysist shoud found BAM formatted files under the <path-to-analysis>/HIMP-1 and <path-to-analysis>/HIMP-2 directories. These files contain the read to genome alignments that should be used as input to the variant analysis steps in the pipeline.
 
-## Variant Calling and Genotyping
+## Variant Calling and Genotyping (performed manually)
+
+This step in the pipeline is performed by the script ``VariantAnalysis.sh``.
+
+The absolute paths of the input data are hardcoded in this script and should be adjusted by the analysist before execution.
+
+```
+WORKDIR="<path-to-analysis>"
+GENOME="<absolute-path-to-genome>/genome.fasta"
+PROBESET="<path-to-project-install>/share/Himpetiginosus.probeset.v0.3.bed"
+```
+Use qsub program to submit the job script to the cluster
+
+```
+qsub -N variant-calling -q normal.c <path-to-project-install>/VariantAnalysis.sh
+```
+
+## Variant Genotyping (performed manually)
+
+This step in the pipeline is performed by the script ``GenotypingAnalysis.sh``.
+
+The absolute paths of the input data are hardcoded in this script and should be adjusted by the analysist before execution.
+
+```
+WORKDIR="<path-to-analysis>"
+GENOME="<absolute-path-to-genome>/genome.fasta"
+PROBESET="<path-to-project-install>/share/Himpetiginosus.probeset.v0.3.bed"
+```
+Use qsub program to submit the job script to the cluster
+
+```
+qsub -N variant-genotyping -q normal.c <path-to-project-install>/GenotypingAnalysis.sh
+```
+## Variant Filtration and Annotation (performed manually)
+
+This step in the pipeline is performed by the script ``VariantAnnotation.sh``.
+
+The absolute paths of the input data are hardcoded in this script and should be adjusted by the analysist before execution.
+
+```
+WORKDIR="<path-to-analysis>"
+GENOME="<absolute-path-to-genome>/genome.fasta"
+```
+Use qsub program to submit the job script to the cluster
+
+```
+qsub -N variant-annotation -q normal.c <path-to-project-install>/VariantAnnoation.sh
+```
 
 
 ## Built With
