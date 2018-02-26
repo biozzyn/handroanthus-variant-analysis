@@ -28,7 +28,7 @@ Included pipeline scripts require a successful install of various open-source to
 
 ### Prerequisites
 
-Please see the Install section of [IGGMC](https://bitbucket.org/rokhsar-lab/gbs-analysis) repository to get information on how to obtain the necessary code and configure your local system to run analysis 1 & 2 in this pipeline.
+Please see the Installation section of [IGGMC](https://bitbucket.org/rokhsar-lab/gbs-analysis) repository to get information on how to obtain the necessary code and configure your local system to run analysis 1 & 2 in this pipeline.
 
 Additionaly, the analyst should observe that all the required softwares are accessible via the user's PATH environment variable. For the GATK, SNPEff, PICARD programs we used the following entries in our Bash startup file ``.bashrc``
 
@@ -41,17 +41,20 @@ SNPEFF="~/my_tools/snpeff/snpEff.jar"
 More detailed information on how to setup necessary programs to run a variant analysis pipeline using GATK is accessible [here](https://gatkforums.broadinstitute.org/gatk/discussion/2899/howto-install-all-software-packages-required-to-follow-the-gatk-best-practices)
 
 
-### Installing
+### Installation
 
-A step by step series of examples that tell you have to get a development env running
+#### Obtaining the code
 
-Say what the step will be
+Assuming Git is correctly installed on your system, simply invoke:
 
 ```
-Give the example
+git clone https://github.com/biozzyn/handroanthus-variant-analysis.git
 ```
 
-And repeat
+### Configuring your installation
+
+Assuming all the required dependencies are successfully installed in your local system you can proceed to download the data used as input for the pipeline.
+
 
 ```
 until finished
