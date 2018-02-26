@@ -20,7 +20,7 @@ Analysis 1 & 2 are perfomed in an automated way with a modified version of the s
 
 Analyses 3 - 5 are perfomed manually and the analyst should consult the Variant Calling and Genotyping section provided herein for step-by-step analysis instructions. Tips on assessing data quality and choosing thresholds are provided in the supplementary file S1 of the manuscript.
 
-Additional resources used by the pipeline are available to the analyst under the directory share in this project. Basically, it includes reference information about reliable SNPs for quality score recalibration using GATK VariantRecalibrator tool and also a reference database of SNP annotations generated using the SNPEff program.Detailed description on how these resources were generated is provided in the supplementary file S1 of the manuscript.
+Additional resources used by the pipeline are available to the analyst under the directory ``share`` in this project. Basically, it includes reference information about reliable SNPs for quality score recalibration using GATK VariantRecalibrator tool and also a reference database of SNP annotations generated using the SNPEff program. Detailed description on how these resources were generated is provided in the ``supplementary file S1 of the manuscript``.
 
 # Getting Started
 
@@ -28,18 +28,25 @@ Included pipeline scripts require a successful install of various open-source to
 
 ## Prerequisites
 
-Please see the Installation section of [IGGMC](https://bitbucket.org/rokhsar-lab/gbs-analysis) repository to get information on how to obtain the necessary code and configure your local system to run analysis 1 & 2 in this pipeline.
+Please see the **Installation section** of [IGGMC](https://bitbucket.org/rokhsar-lab/gbs-analysis) repository to get information on how to obtain the necessary code and configure your local system to run analysis 1 & 2 in this pipeline. For the analyses 3 - 5 the pipeline requires the installation of GATK and associated programs.
 
-Additionaly, the analyst should observe that all the required softwares are accessible via the user's PATH environment variable. For the GATK, SNPEff, PICARD programs we used the following entries in our Bash startup file ``.bashrc``
+The analyst should observe that all the required programs have to be accessible via the user's PATH environment variable. For the GATK, SNPEff, PICARD programs we used the following entries in our Bash startup file ``.bashrc``
 
 ```
-PICARD="~/my_tools/picard/picard.jar"
 GATK="~/my_tools/gatk/GenomeAnalysisTK.jar"
-SNPEFF="~/my_tools/snpeff/snpEff.jar"
+PICARD="~/my_tools/picard/picard.jar"
+SnpEff="~/my_tools/snpeff/snpEff.jar"
 ```
+
+So then when you want to run a Picard/GATK/SnpEff tool, you just need to call the jar by its shortcut, like this:
+
+``
+java -jar $GATK -T <Toolname> [options]
+java -jar $PICARD <Toolname> [options]
+java -jar $SnpEff <Toolname> [options]
+``
 
 More detailed information on how to setup necessary programs to run a variant analysis pipeline using GATK is accessible [here](https://gatkforums.broadinstitute.org/gatk/discussion/2899/howto-install-all-software-packages-required-to-follow-the-gatk-best-practices)
-
 
 ## Installation
 
@@ -230,7 +237,7 @@ A final set of calls with genotypes is then provided to the analyst. This set co
 Variant Discovery in High-Throughput Sequencing Data.
 * [VCFtools](https://vcftools.github.io) - A set of tools written in Perl and C++ for working with VCF files.
 * [Samtools/BCFtools](http://www.htslib.org) - A suite of programs for interacting with high-throughput sequencing data
-* [SnpEff] (http://snpeff.sourceforge.net) - Genomic variant annotations and functional effect prediction toolbox.
+* [SnpEff](http://snpeff.sourceforge.net) - Genomic variant annotations and functional effect prediction toolbox.
 
 ## Citation
 * To appear in Silva-Junior OB, Novaes E, Grattapaglia D, Collevatti R. Design and evaluation of a sequence capture system for genome-wide SNP genotyping of a keystone Neotropical hardwood tree genome. DNA Research (2018)
