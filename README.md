@@ -240,7 +240,7 @@ Variant Discovery in High-Throughput Sequencing Data.
 * [SnpEff](http://snpeff.sourceforge.net) - Genomic variant annotations and functional effect prediction toolbox.
 
 ## Citation
-* To appear in Silva-Junior OB, Novaes E, Grattapaglia D, Collevatti R. Design and evaluation of a sequence capture system for genome-wide SNP genotyping of a keystone Neotropical hardwood tree genome. DNA Research (2018)
+* To appear in Silva-Junior OB, Novaes E, Grattapaglia D, Collevatti R. *Design and evaluation of a sequence capture system for genome-wide SNP genotyping of a keystone Neotropical hardwood tree genome*. DNA Research (2018).
 
 ## Authors
 
