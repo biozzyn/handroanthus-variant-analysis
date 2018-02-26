@@ -45,9 +45,15 @@ More detailed information on how to setup necessary programs to run a variant an
 
 ### Obtaining the code
 
+Create a directory to clone the project files into. Remember that this directory should be accessible to your local cluster environment. For example:
+
+```
+mkdir <path-to-project-install>
+```
 Assuming Git is correctly installed on your system, simply invoke:
 
 ```
+cd <path-to-project-install>
 git clone https://github.com/biozzyn/handroanthus-variant-analysis.git
 ```
 
@@ -119,14 +125,14 @@ For the library/run HIMP1_1:
   --datadir <absolute-path-to-data> \
   --lib-name HIMP1_1 \
   --sample-file <path-to-analysis>/HIMP-1/samples.tsv \
+  --manifest <path-to-analysis>/HIMP-1//manifest.txt \
   --target-analysis <path-to-IGGMC-analysis-tool> \
   --adaptor-fasta <path-to-project-install>/share/adaptors_illumina.fa \
   --ref-genome <absolute-path-to-genome>/genome.fasta \
   --sequence-source Handroanthus_impetiginosus \
   --flowcell-id C2THMACXX \
   --flowcell-lane 2 \
-  --manifest <path-to-analysis>/HIMP-1//manifest.txt \
-  --max-runtime 08:00:00
+  --max-runtime 08:00:00 >& himp1_1.prepro.log &
 ```
 
 For the library/run HIMP2_1:
@@ -137,16 +143,19 @@ For the library/run HIMP2_1:
   --datadir <absolute-path-to-data> \
   --lib-name HIMP2_1 \
   --sample-file <path-to-analysis>/HIMP-2/samples.tsv \
+  --manifest <path-to-analysis>/HIMP-2/manifest.txt \
   --target-analysis <path-to-IGGMC-analysis-tool> \
   --adaptor-fasta <path-to-project-install>/share/adaptors_illumina.fa \
   --ref-genome <absolute-path-to-genome>/genome.fasta \
   --sequence-source Handroanthus_impetiginosus \
   --flowcell-id C2Y14ACXX \
   --flowcell-lane 6 \
-  --manifest <path-to-analysis>/HIMP-1//manifest.txt \
-  --max-runtime 08:00:00
+  --max-runtime 08:00:00 >& himp2_1.prepro.log &
 ```
 
+If all the analysis ran successfully the analysist shoud found BAM formatted files under the <path-to-analysis>/HIMP-1 and <path-to-analysis>/HIMP-2 directories. These files contain the read to genome alignments that should be used as input to the variant analysis steps in the pipeline.
+
+## Variant Calling and Genotyping
 
 
 ## Built With
