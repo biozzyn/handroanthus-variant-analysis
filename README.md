@@ -6,11 +6,13 @@ This is the project containing all scripts written and used by the "Design and e
 
 Briefly, the pipeline guides the user through the following analysis:
 
-## 1. Fastq adaptor- and quality-trimming (automated)
-## 2. Short-read alignment (automated)
-## 3. Variant calling and genotyping (performed manually)
-## 4. Variant filtration (performed manually)
-## 5. Variant annotation (performed manually)
+```
+1. Fastq adaptor- and quality-trimming (automated)
+2. Short-read alignment (automated)
+3. Variant calling and genotyping (performed manually)
+4. Variant filtration (performed manually)
+5. Variant annotation (performed manually)
+```
 
 The pipeline relies on the use of a distributed memory compute cluster to enable the analyst to run large scale project with  large number of samples.
 
