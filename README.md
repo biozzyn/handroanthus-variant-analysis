@@ -22,11 +22,11 @@ Analyses 3 - 5 are perfomed manually and the analyst should consult the Variant 
 
 Additional resources used by the pipeline are available to the analyst under the directory share in this project. Basically, it includes reference information about reliable SNPs for quality score recalibration using GATK VariantRecalibrator tool and also a reference database of SNP annotations generated using the SNPEff program.Detailed description on how these resources were generated is provided in the supplementary file S1 of the manuscript.
 
-## Getting Started
+# Getting Started
 
 Included pipeline scripts require a successful install of various open-source tools used for variant analysis. See Dependencies herein. Additionaly, the analyst will need to install the scripts provided by the International Cassava Genetic Map Consortium (ICGMC) available [here](https://bitbucket.org/rokhsar-lab/gbs-analysis).
 
-### Prerequisites
+## Prerequisites
 
 Please see the Installation section of [IGGMC](https://bitbucket.org/rokhsar-lab/gbs-analysis) repository to get information on how to obtain the necessary code and configure your local system to run analysis 1 & 2 in this pipeline.
 
@@ -41,9 +41,9 @@ SNPEFF="~/my_tools/snpeff/snpEff.jar"
 More detailed information on how to setup necessary programs to run a variant analysis pipeline using GATK is accessible [here](https://gatkforums.broadinstitute.org/gatk/discussion/2899/howto-install-all-software-packages-required-to-follow-the-gatk-best-practices)
 
 
-### Installation
+## Installation
 
-#### Obtaining the code
+### Obtaining the code
 
 Assuming Git is correctly installed on your system, simply invoke:
 
@@ -51,44 +51,46 @@ Assuming Git is correctly installed on your system, simply invoke:
 git clone https://github.com/biozzyn/handroanthus-variant-analysis.git
 ```
 
-### Configuring your installation
+## Configuring your installation
 
 Assuming all the required dependencies are successfully installed in your local system you can proceed to download the data used as input for the pipeline.
 
-#### Data directory structure
+### Data directory structure
 
 Under the project structure there is a directory named ``data``. The analyst shoud copy the whole directory to a local place acessible to the cluster system and run the ``setup.sh`` to initiate the download of the fastq from the NCBI's SRA repo
 
 ```
 cp -r data <absolute-path-to-data>
-cd <absolute-path-to-data>
+cd <absolute-path-to-data>/data
 bash setup.sh
 ```
 This setup script creates a recommended directory structure that is arranged heirarchically with the read files sequence within it. For example:
 
 ``
 <absolute-path-to-data>/
-          <LIBRARY-NAME>_<RUN-ID>/
-                <LIBRARY-NAME>_<RUN-ID>-<SAMPLE-NAME>_0.fastq.gz
+                        <LIBRARY-NAME>_<RUN-ID>/
+                                               <LIBRARY-NAME>_<RUN-ID>-<SAMPLE-NAME>_0.fastq.gz
 ``
 
 In our manuscript we described a first Capture-Seq library using fragments of DNA captured by 30,795 probes in the sample of 24 individuals of H. impetiginosus. These fragments were sequenced in a single sequencing run in one lane of a HiSeq2000 instrument, single-end mode. These sequence data will be available whithin a directory named HIMP1_1.
 
 We described also a second Capture-Seq library for a partially replicate set using fragments of DNA captured by 14,135 probes out of the original set of 30,795 probeset.These fragments were sequenced in a single sequencing run in one lane of a HiSeq2000 instrument, single-end mode. These sequence data will be available whithin a directory named HIMP2_1.
 
-#### Sequence assembly
+### Sequence assembly
 
 Under the project structure there is a directory named ``genome``. The analyst shoud copy the whole directory to a local place acessible to the cluster system and run the ``setup.sh`` to initiate the download of the multi-fasta from the NCBI's Genbank repo.
 
 ``
 cp -r genome <absolute-path-to-genome>
-cd <absolute-path-to-genome>
+
+cd <absolute-path-to-genome>/genome
+
 bash setup.sh
 ``
 
 This setup script uses ``wget`` program to download the sequence assembly and modify the sequence header for further processing.
 
-### Running the pipeline
+## Running the pipeline
 
 
 
