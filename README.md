@@ -176,6 +176,8 @@ qsub -N variant-calling -q normal.c <path-to-project-install>/VariantAnalysis.sh
 
 Basically, this script will perform the variant call step in the pipeline using GATK's HaplotypeCaller model. It takes the alignment files and produce raw (unfiltered) gVCF files for each processed sample over the target intervals ``(file: $PROBESET)``. Details on how we have determined the basic parameters of the analysis are described in the main text (Results and Discussion) and supplementary file S1 of the manuscript.
 
+Note that if you are using GATK version older than 3.4 you need to set the appropriate values  for --variant_index_type and --variant_index_parameter. For caution we set these parameter in the script.
+
 ### Variant Genotyping (performed manually)
 
 This step in the pipeline is performed by the script ``GenotypingAnalysis.sh``.
