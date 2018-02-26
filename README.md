@@ -155,11 +155,11 @@ For the library/run HIMP2_1:
   --max-runtime 08:00:00 >& himp2_1.prepro.log &
 ```
 
-If all the analysis ran successfully the analysist shoud found BAM formatted files under the <path-to-analysis>/HIMP-1 and <path-to-analysis>/HIMP-2 directories. These files contain the read to genome alignments that should be used as input to the variant analysis steps in the pipeline.
+If all the analysis ran successfully the analysist shoud found BAM formatted files under the ``<path-to-analysis>/HIMP-1`` and ``<path-to-analysis>/HIMP-2`` directories. These files contain the read to genome alignments that should be used as input to the variant analysis steps in the pipeline.
 
-## Variant Calling and Genotyping (performed manually)
+### Variant Calling and Genotyping (performed manually)
 
-This step in the pipeline is performed by the script ``VariantAnalysis.sh``.
+This step in the pipeline is performed by the script ``VariantCalling.sh``.
 
 The absolute paths of the input data are hardcoded in this script and should be adjusted by the analysist before execution.
 
@@ -174,7 +174,9 @@ Use qsub program to submit the job script to the cluster
 qsub -N variant-calling -q normal.c <path-to-project-install>/VariantAnalysis.sh
 ```
 
-## Variant Genotyping (performed manually)
+Basically, this script will perform the variant call step in the pipeline using GATK's HaplotypeCaller model. It takes the alignment files and produce raw (unfiltered) gVCF files for each processed sample over the target intervals ``(file: $PROBESET)``. Details on how we have determined the basic parameters of the analysis are described in the main text (Results and Discussion) and supplementary file S1 of the manuscript.
+
+### Variant Genotyping (performed manually)
 
 This step in the pipeline is performed by the script ``GenotypingAnalysis.sh``.
 
@@ -190,7 +192,12 @@ Use qsub program to submit the job script to the cluster
 ```
 qsub -N variant-genotyping -q normal.c <path-to-project-install>/GenotypingAnalysis.sh
 ```
-## Variant Filtration and Annotation (performed manually)
+
+This step uses GATK's GenotypeGVCFs to merge gVCF records that were produced as part of the Best Practices workflow for variant discovery using the '-ERC GVCF' mode of the HaplotypeCaller. This tool performs the multi-sample joint aggregation step and merges the records together: at each position of the input gVCFs, GenotypeGVCFs will combine all spanning records to produce correct genotype likelihoods.
+
+Additionaly, GATK's VariantRecalibrator tool is used to assign a well-calibrated probability to each variant call in the raw call set. The approach taken by this tools is to develop a continuous, covarying estimate of the relationship between SNP call annotations (QD, MQ, MQRankSum, ReadPosRankSum and FS were used) and the probability that a SNP is a true genetic variant versus a sequencing or data processing artifact. This model is determined adaptively based on "true sites" provided as input in the ``<path-to-project-install>/share/vqsr_truth-true_training-yes.vcf`` and ``<path-to-project-install>/share/vqsr_truth-true_training-yes.vcf``. Details on how we have determined these "true sites" parameters of the analysis are described in the supplementary file S1 of the manuscript.
+
+### Variant Filtration and Annotation (performed manually)
 
 This step in the pipeline is performed by the script ``VariantAnnotation.sh``.
 
@@ -205,6 +212,8 @@ Use qsub program to submit the job script to the cluster
 ```
 qsub -N variant-annotation -q normal.c <path-to-project-install>/VariantAnnoation.sh
 ```
+
+This script perform additional refinement to the variant call and genotyping steps to remove unreliable genotype records (GQ < 20).  These records are marked first using GATK's VariantFiltration tool and after that they are set to no-call (./.) using vcftools --minGQ 20.
 
 
 ## Built With
