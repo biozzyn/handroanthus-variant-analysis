@@ -166,7 +166,7 @@ For the library/run HIMP1_1:
   --target-analysis <path-to-IGGMC-analysis-tool> \
   --adaptor-fasta <path-to-analysis>/share/adaptors_illumina.fa \
   --ref-genome <absolute-path-to-genome>/genome.fasta \
-  --sequence-source Handroanthus_impetiginosus \
+  --sequence-source SRP076124 \
   --flowcell-id C2THMACXX \
   --flowcell-lane 2 \
   --max-runtime 08:00:00 >& himp1_1.prepro.log &
@@ -184,7 +184,7 @@ For the library/run HIMP2_1:
   --target-analysis <path-to-IGGMC-analysis-tool> \
   --adaptor-fasta <path-to-analysis>/share/adaptors_illumina.fa \
   --ref-genome <absolute-path-to-genome>/genome.fasta \
-  --sequence-source Handroanthus_impetiginosus \
+  --sequence-source SRP076124 \
   --flowcell-id C2Y14ACXX \
   --flowcell-lane 6 \
   --max-runtime 08:00:00 >& himp2_1.prepro.log &
