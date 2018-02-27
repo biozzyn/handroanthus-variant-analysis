@@ -194,7 +194,7 @@ If all the analysis ran successfully the analysist shoud find BAM formatted file
 
 ### Variant Calling and Genotyping (performed manually)
 
-This step in the pipeline is performed by the script ``VariantCalling.sh``.
+This step in the pipeline is performed by the script ``VariantAnalysis.sh``.
 
 The absolute paths of the input data are hardcoded in this script and should be adjusted by the analyst before execution.
 
@@ -211,13 +211,13 @@ qsub -N variant-calling -q normal.c <path-to-project-install>/VariantAnalysis.sh
 
 Basically, this script will perform the variant call step in the pipeline using GATK's HaplotypeCaller model. It takes the alignment files and produce raw (unfiltered) gVCF files for each processed sample over the target intervals ``(file: $PROBESET)``. Details on how we have determined the basic parameters of the analysis are described in the main text (Results and Discussion) and supplementary file S1 of the manuscript.
 
-Note that if you are using GATK version older than 3.4 you need to set the appropriate values  for --variant_index_type and --variant_index_parameter. For caution we set these parameter in the script.
+Note that if you are using GATK version older than 3.4 you need to set the appropriate values  for --variant_index_type and --variant_index_parameter. For caution we set these parameter in the script. We recommend GATK 3.7+.
 
 ### Variant Genotyping (performed manually)
 
 This step in the pipeline is performed by the script ``GenotypingAnalysis.sh``.
 
-The absolute paths of the input data are hardcoded in this script and should be adjusted by the analysist before execution.
+The absolute paths of the input data are hardcoded in this script and should be adjusted by the analyst before execution.
 
 ```
 WORKDIR="<path-to-analysis>"
@@ -238,7 +238,7 @@ Additionaly, GATK's VariantRecalibrator tool is used to assign a well-calibrated
 
 This step in the pipeline is performed by the script ``VariantAnnotation.sh``.
 
-The absolute paths of the input data are hardcoded in this script and should be adjusted by the analysist before execution.
+The absolute paths of the input data are hardcoded in this script and should be adjusted by the analyst before execution.
 
 ```
 WORKDIR="<path-to-analysis>"
@@ -247,13 +247,14 @@ GENOME="<absolute-path-to-genome>/genome.fasta"
 Use qsub program to submit the job script to the cluster
 
 ```
-qsub -N variant-annotation -q normal.c <path-to-project-install>/VariantAnnoation.sh
+qsub -N variant-annotation -q normal.c <path-to-project-install>/VariantAnnotation.sh
 ```
 
-This script perform additional refinement to the variant call and genotyping steps to remove unreliable genotype records (GQ < 20).  These filtered records are marked and set to no-call (./.)  using GATK's VariantFiltration tool. We only filter on GQ to disqualify variants where we have too few samples with reasonable-quality genotypes. After this step, we re-annotate each remaining variants using all available metrics provided by the GATK's VariantAnnotator tool and SNPEff program.
+This script perform additional refinement to the variant call and genotyping steps to remove unreliable genotype records (GQ < 20).  These filtered records are marked and set to no-call (./.)  using GATK's VariantFiltration tool. We only filter on GQ to disqualify variants where we have too few samples with reasonable-quality genotypes. 
 
-A final set of calls with genotypes is then provided to the analyst. This set contains the filtered calls where we have observed SNP call rate > 80% across the analysed sample of 24 individuals.
+This script also perform re-annotation on each remaining variants using all available metrics provided by the GATK's VariantAnnotator tool and SNPEff program.
 
+A final set of SNP calls with genotypes is then provided to the analyst. This set contains the filtered calls where we have observed SNP call rate > 80% across the analysed sample of 24 individuals.
 
 ## Built With
 
