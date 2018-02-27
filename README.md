@@ -277,7 +277,7 @@ Variant Discovery in High-Throughput Sequencing Data.
 * [SnpEff](http://snpeff.sourceforge.net) - Genomic variant annotations and functional effect prediction toolbox.
 
 ## Citation
-* Silva-Junior OB, Novaes E, Grattapaglia D, Collevatti R. *Design and evaluation of a sequence capture system for genome-wide SNP genotyping of a keystone Neotropical hardwood tree genome*. DNA Research (forthcoming 2018).
+* Silva-Junior OB, Grattapaglia D, Novaes E, Collevatti RG. *Design and evaluation of a sequence capture system for genome-wide SNP genotyping of a keystone Neotropical hardwood tree genome*. DNA Research (forthcoming 2018).
 
 ## Authors
 
@@ -291,7 +291,7 @@ Variant Discovery in High-Throughput Sequencing Data.
 
 Genome assembly of *Handroanthus impetiginosus*:
 
-* Silva-Junior OB, Novaes E, Grattapaglia D, Collevatti R. Genome assembly of the Pink Ipê (Handroanthus impetiginosus, Bignoniaceae), a highly valued, ecologically keystone Neotropical timber forest tree. GigaScience, Volume 7, Issue 1, 1 January 2018, Pages 1–16. [link](https://doi.org/10.1093/gigascience/gix125)
+* Silva-Junior OB, Novaes E, Grattapaglia D, Collevatti RG. Genome assembly of the Pink Ipê (Handroanthus impetiginosus, Bignoniaceae), a highly valued, ecologically keystone Neotropical timber forest tree. GigaScience, Volume 7, Issue 1, 1 January 2018, Pages 1–16. [link](https://doi.org/10.1093/gigascience/gix125)
 
 Description of RAPiD Genomics' (Gainsville, Florida, USA) Capture-Seq can be found in:
 
