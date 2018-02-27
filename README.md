@@ -28,9 +28,9 @@ Included pipeline scripts require a successful install of various open-source to
 
 ## Prerequisites
 
-Please see the **Installation section** of [IGGMC](https://bitbucket.org/rokhsar-lab/gbs-analysis) repository to get information on how to obtain the necessary code and configure your local system to run analysis 1 & 2 in this pipeline. For the analyses 3 - 5 the pipeline requires the installation of GATK and associated programs.
+Please see the **Installation section** of [IGGMC](https://bitbucket.org/rokhsar-lab/gbs-analysis) repository to get information on how to obtain the necessary code and configure your local system to run analysis 1 & 2 in this pipeline. There is no need to worry about preparing IGGMC to run as described originally. We offer in the following sections a simplified way to prepare your files and resources to get this project running.
 
-The analyst should observe that all the required programs have to be accessible via the user's PATH environment variable. For the GATK, SNPEff, PICARD programs we used the following entries in our Bash startup file ``.bashrc``
+For the analyses 3 - 5 the pipeline requires the installation of GATK and associated programs. The analyst should observe that all the required programs have to be accessible via the user's PATH environment variable. For the GATK, SNPEff, PICARD programs we used the following entries in our Bash startup file ``.bashrc``
 
 ```
 GATK="~/my_tools/gatk/GenomeAnalysisTK.jar"
