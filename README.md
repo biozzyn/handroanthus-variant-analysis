@@ -4,7 +4,7 @@ Targeted sequence capture coupled to high-throughput sequencing has become a pow
 
 Following the recent availability of a genome sequence assembly for the Pink Ipê tree (*Handroanthus impetiginosus*) that appeared in GigaScience Jounal (2018), we reported the development of a set of 24,751 capture probes for single nucleotide polymorphisms (SNPs) characterization and genotyping across 18,216 distinct loci, sampling more than 10 Mbp of the species genome. This system identifies nearly 200,000 SNPs located inside or in close proximity to almost 14,000 annotated protein-coding genes, generating quality genotypic data in populations spanning wide geographic distances across the species native range.
 
-This is the project containing all scripts used in the analyses developed for the "Design and evaluation of a sequence capture system for genome-wide SNP genotyping of a keystone Neotropical hardwood tree genome" paper now accepted an to be published in the Jounal DNA Research (2018). The pipeline uses standard tools for variant analysis distributed under specific Open Source Licenses. It takes fastq data generated using RAPiD Genomics (Gainsville, Florida, USA)' Capture-Seq service and the genome assembly sequence of *Handroanthus impetiginosus* as primary inputs. All data are available from NCBI's publicly repositories. 
+This is the project containing all scripts used in the analyses developed for the "Design and evaluation of a sequence capture system for genome-wide SNP genotyping of a keystone Neotropical hardwood tree genome" paper now accepted an to be published in the Jounal DNA Research (2018). The pipeline uses standard tools for variant analysis distributed under specific Open Source Licenses. It takes fastq data generated using RAPiD Genomics' (Gainsville, Florida, USA) Capture-Seq service and the genome assembly sequence of *Handroanthus impetiginosus* as primary inputs. All data are available from NCBI's publicly repositories. 
 
 Briefly, the pipeline guides the user through the following analysis:
 
@@ -292,7 +292,7 @@ Genome assembly of *Handroanthus impetiginosus*:
 
 * Silva-Junior OB, Novaes E, Grattapaglia D, Collevatti R. Genome assembly of the Pink Ipê (Handroanthus impetiginosus, Bignoniaceae), a highly valued, ecologically keystone Neotropical timber forest tree. GigaScience, Volume 7, Issue 1, 1 January 2018, Pages 1–16. [link](https://doi.org/10.1093/gigascience/gix125)
 
-Description of RAPiD Genomics (Gainsville, Florida, USA)' Capture-Seq can be found in:
+Description of RAPiD Genomics' (Gainsville, Florida, USA) Capture-Seq can be found in:
 
 * Neves LG, Davis JM, Barbazuk WB, Kirst M. Whole-exome targeted sequencing of the uncharacterized pine genome. The Plant Journal (2013) 75, 146–156. [link](http://dx.doi.org/10.1111/tpj.12193)
 
