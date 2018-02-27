@@ -3,9 +3,6 @@
 #$ -cwd 
 #$ -t 1-24
 
-#see
-#http://gatkforums.broadinstitute.org/gatk/discussion/5389/unusual-calls-after-using-haplotypecaller-filtered-with-vqsr-and-refinement-workflow
-
 ID=$SGE_TASK_ID
 
 WORKDIR=""    #need to setup; see README.md
