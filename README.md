@@ -18,7 +18,7 @@ Briefly, the pipeline guides the user through the following analysis:
 
 The pipeline relies on the use of a distributed memory compute cluster to enable the analyst to run large scale project with  large number of samples.
 
-Analysis 1 & 2 are perfomed in an automated way with a modified version of the scripts provided by the International Cassava Genetic Map Consortium (ICGMC) paper published in G3 Journal (2014). Scripts were originally written for processing Illumina paired-end data or Illumina single-read data and use BWA to align reads against the input reference genome sequence.
+Analysis 1 & 2 are perfomed in an automated way with a modified version of the scripts provided by the International Cassava Genetic Map Consortium (ICGMC) paper published in [G3 Journal (2015)](https://doi.org/10.1534/g3.114.015008). Scripts were originally written for processing Illumina paired-end data or Illumina single-read data and use BWA to align reads against the input reference genome sequence.
 
 Analyses 3 - 5 are perfomed manually and the analyst should consult the Variant Calling and Genotyping section provided herein for step-by-step analysis instructions. Tips on assessing data quality and choosing thresholds are provided in the supplementary file S1 of the manuscript.
 
