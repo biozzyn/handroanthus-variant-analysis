@@ -275,7 +275,7 @@ Variant Discovery in High-Throughput Sequencing Data.
 
 ## Acknowledgments
 
-* We acknowledge all the anonymous reviewers and the Editor at DNA Research for contributions
+* We thank the anonymous reviewers for their careful reading of our manuscript and their insightful suggestions.
 
 ## Additional resources
 
