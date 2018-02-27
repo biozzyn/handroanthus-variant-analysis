@@ -3,8 +3,10 @@
 #$ -cwd
 #$ -t 1
 
-WORKDIR=""    #need to setup; see README.md
-GENOME=""     #need to setup; see README.md
+## NEED TO BE MODIFIED BY THE ANALYST
+WORKDIR="<path-to-analysis>"                                          #need to setup; see README.md
+GENOME="<absolute-path-to-genome>/genome.fasta"                       #need to setup; see README.md
+##
 
 [ -d "${WORKDIR}/genotyping" ] || mkdir ${WORKDIR}/genotyping;
 
@@ -18,6 +20,7 @@ do
  bams+=" -I ${bam} "
 done
 
+#generate a recalibrated and filtered set of calls
 java -jar -Xmx5g -Xms5g ${GATK} \
   -T VariantFiltration \
   -R $GENOME \
@@ -32,6 +35,7 @@ vcftools --vcf ${WORKDIR}/genotyping/${spp}.SNPS.recal_ts90.0.xGQ20.vcf \
   --mac 2 --min-alleles 2 --max-alleles 2 \
   --recode --recode-INFO-all --stdout > ${WORKDIR}/genotyping/${spp}.SNPS.recal_ts90.0.xGQ20.f.vcf
 
+#annotate SNP for its effects
 java -jar $SNPEFF \
   ann \
   -i vcf \
@@ -42,7 +46,7 @@ java -jar $SNPEFF \
   ${WORKDIR}/genotyping/${spp}.SNPS.recal_ts90.0.xGQ20.f.vcf \
   >${WORKDIR}/genotyping/${spp}.SNPS.recal_ts90.0.xGQ20.f.eff.vcf
 
-
+#generate lot of annotations for SNP sites
 java -jar -Xmx5g -Xms5g ${GATK} \
   -T VariantAnnotator \
   -R $GENOME \
@@ -76,17 +80,17 @@ echo "##INFO=<ID=RECAL_STATUS,Number=1,Type=String,Description=\"Status of the v
   ${WORKDIR}/genotyping/HIMP.SNPS.recal_ts90.0.xGQ20.f.annot.vcf \
   >${WORKDIR}/genotyping/HIMP.SNPS.recal_ts90.0.xGQ20.annotated.vcf 
 
+ann=$( grep '^##INFO' ${WORKDIR}/genotyping/${spp}.SNPS.recal_ts90.0.xGQ20.annotated.vcf | \
+      awk -F"," '{sub("##INFO=<ID=","",$1); printf " --get-INFO %s ", $1} END {printf "\n"}' )
+
+#extract all the annotation for the SNP sites to a TSV file
+vcftools --vcf ${WORKDIR}/genotyping/${spp}.SNPS.recal_ts90.0.xGQ20.annotated.vcf \
+  --out ${WORKDIR}/genotyping/${spp}.SNPS.recal_ts90.0.xGQ20.annotated.metrics \
+  $ann
+
+#generate the filtered calls and genotypes
 vcftools --vcf ${WORKDIR}/genotyping/${spp}.SNPS.recal_ts90.0.xGQ20.annotated.vcf \
   --out ${WORKDIR}/genotyping/${spp}.SNPS.filtered \
   --max-missing 0.8 \
   --remove-filtered-all \
   --recode --recode-INFO-all --stdout > ${WORKDIR}/genotyping/${spp}.SNPS.filtered.vcf
-
-
-ann=$( grep '^##INFO' ${WORKDIR}/genotyping/${spp}.SNPS.recal_ts90.0.xGQ20.annotated.vcf | \
-      awk -F"," '{sub("##INFO=<ID=","",$1); printf " --get-INFO %s ", $1} END {printf "\n"}' )
-
-
-vcftools --vcf ${WORKDIR}/genotyping/${spp}.SNPS.recal_ts90.0.xGQ20.annotated.vcf \
-  --out ${WORKDIR}/genotyping/${spp}.SNPS.recal_ts90.0.xGQ20.annotated.metrics \
-  $ann
