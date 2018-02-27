@@ -28,7 +28,7 @@ Included pipeline scripts require a successful install of various open-source to
 
 ## Prerequisites
 
-Please see the **Installation section** of [IGGMC](https://bitbucket.org/rokhsar-lab/gbs-analysis) repository to get information on how to obtain the necessary code and configure your local system to run analysis 1 & 2 in this pipeline. There is no need to worry about preparing IGGMC to run as described originally. We offer in the following sections a simplified way to prepare your files and resources to get this project running.
+Please see the **Installation section** of [IGGMC](https://bitbucket.org/rokhsar-lab/gbs-analysis) repository to get information on how to obtain the necessary code and configure your local system to run analysis 1 & 2 in this pipeline. There is no need to worry about preparing IGGMC to run as described originally. We offer in the following sections a simplified way to prepare your files and resources to get this project running. The full path for the local installation of the IGGMC tool will be referred hereafter as ``<path-to-IGGMC-analysis-tool>``.
 
 For the analyses 3 - 5 the pipeline requires the installation of GATK and associated programs. The analyst should observe that all the required programs have to be accessible via the user's PATH environment variable. For the GATK, SNPEff, PICARD programs we used the following entries in our Bash startup file ``.bashrc``
 
@@ -77,7 +77,7 @@ mkdir <absolute-path-to-data>
 cd <path-to-project-install>
 cp -r data/* <absolute-path-to-data>/
 cd <absolute-path-to-data>
-bash setup.sh
+bash setup.sh >& mylog.txt &
 ```
 This setup script uses the program ``fastq-dump`` whithin the NCBI SRA Toolkit package to download the fastq files for the experiments. It creates a recommended directory structure that is arranged hierarchically with the read files sequence within it. For example:
 
