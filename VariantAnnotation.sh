@@ -73,7 +73,7 @@ echo "##INFO=<ID=RECAL_STATUS,Number=1,Type=String,Description=\"Status of the v
 >${WORKDIR}/genotyping/variant_status.hdr
 
 
-/lbi/acgt/bioinfo/GENOME_MAPPING/SAMTOOLS/bcftools-1.1/bcftools annotate \
+bcftools annotate \
   -a ${WORKDIR}/genotyping/variant_status.tab.gz \
   -h ${WORKDIR}/genotyping/variant_status.hdr \
   -c CHROM,POS,RECAL_STATUS \
