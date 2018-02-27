@@ -195,12 +195,12 @@ If all the analysis ran successfully the analysist shoud found BAM formatted fil
 
 This step in the pipeline is performed by the script ``VariantCalling.sh``.
 
-The absolute paths of the input data are hardcoded in this script and should be adjusted by the analysist before execution.
+The absolute paths of the input data are hardcoded in this script and should be adjusted by the analyst before execution.
 
 ```
 WORKDIR="<path-to-analysis>"
 GENOME="<absolute-path-to-genome>/genome.fasta"
-PROBESET="<path-to-project-install>/share/Himpetiginosus.probeset.v0.3.bed"
+PROBESET="<path-to-analysis>/share/Himpetiginosus.probeset.v0.3.bed"
 ```
 Use qsub program to submit the job script to the cluster
 
@@ -231,7 +231,7 @@ qsub -N variant-genotyping -q normal.c <path-to-project-install>/GenotypingAnaly
 
 This step uses GATK's GenotypeGVCFs to merge gVCF records that were produced as part of the Best Practices workflow for variant discovery using the '-ERC GVCF' mode of the HaplotypeCaller. This tool performs the multi-sample joint aggregation step and merges the records together: at each position of the input gVCFs, GenotypeGVCFs will combine all spanning records to produce correct genotype likelihoods.
 
-Additionaly, GATK's VariantRecalibrator tool is used to assign a well-calibrated probability to each variant call in the raw call set. The approach taken by this tools is to develop a continuous, covarying estimate of the relationship between SNP call annotations (QD, MQ, MQRankSum, ReadPosRankSum and FS were used) and the probability that a SNP is a true genetic variant versus a sequencing or data processing artifact. This model is determined adaptively based on "true sites" provided as input in the ``<path-to-project-install>/share/vqsr_truth-true_training-yes.vcf`` and ``<path-to-project-install>/share/vqsr_truth-true_training-yes.vcf``. Details on how we have determined these "true sites" parameters of the analysis are described in the supplementary file S1 of the manuscript.
+Additionaly, GATK's VariantRecalibrator tool is used to assign a well-calibrated probability to each variant call in the raw call set. The approach taken by this tools is to develop a continuous, covarying estimate of the relationship between SNP call annotations (QD, MQ, MQRankSum, ReadPosRankSum and FS were used) and the probability that a SNP is a true genetic variant versus a sequencing or data processing artifact. This model is determined adaptively based on "true sites" provided as input in the ``<path-to-analysis>/share/vqsr_truth-true_training-yes.vcf`` and ``<path-to-analysis>/share/vqsr_truth-true_training-yes.vcf``. Details on how we have determined these "true sites" parameters of the analysis are described in the supplementary file S1 of the manuscript.
 
 ### Variant Filtration and Annotation (performed manually)
 
