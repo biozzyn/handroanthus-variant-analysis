@@ -29,8 +29,8 @@ java -jar -Xmx5g -Xms5g ${GATK} \
  -T HaplotypeCaller \
  -mmq 10 \
  -mbq 10 \
- -I ${WORKDIR}/HIMP-1/sort/HIMP_1-${SNAME[${ID}]}_xAdQ10.srt.bam \
- -I ${WORKDIR}/HIMP-2/sort/HIMP_2-${SNAME[${ID}]}_xAdQ10.srt.bam \
+ -I ${WORKDIR}/HIMP-1/sort/HIMP1_1-${SNAME[${ID}]}_xAdQ10.srt.bam \
+ -I ${WORKDIR}/HIMP-2/sort/HIMP2_1-${SNAME[${ID}]}_xAdQ10.srt.bam \
  -o ${WORKDIR}/gatk/${SNAME[${ID}]}.g.vcf \
  -R $GENOME \
  -ERC GVCF \
