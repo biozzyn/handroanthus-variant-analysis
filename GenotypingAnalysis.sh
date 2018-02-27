@@ -3,9 +3,11 @@
 #$ -cwd
 #$ -t 1
 
-WORKDIR=""    #need to setup; see README.md
-GENOME=""     #need to setup; see README.md
-PROBESET=""   #need to setup; see README.md
+## NEED TO BE MODIFIED BY THE ANALYST
+WORKDIR="<path-to-analysis>"                                          #need to setup; see README.md
+GENOME="<absolute-path-to-genome>/genome.fasta"                       #need to setup; see README.md
+PROBESET="<path-to-analysis>/share/Himpetiginosus.probeset.v0.3.bed"  #need to setup; see README.md
+##
 
 [ -d "${WORKDIR}/genotyping" ] || mkdir ${WORKDIR}/genotyping;
 
