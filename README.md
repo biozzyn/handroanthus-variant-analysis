@@ -74,6 +74,7 @@ Under the project structure there is a directory named ``data``. The analyst sho
 
 ```
 mkdir <absolute-path-to-data>
+cd <path-to-project-install>
 cp -r data/* <absolute-path-to-data>/
 cd <absolute-path-to-data>
 bash setup.sh
@@ -256,10 +257,18 @@ A final set of calls with genotypes is then provided to the analyst. This set co
 
 ## Built With
 
+### Gnu/Linux shell and utility softwares
+* [Bash](https://www.gnu.org/software/bash/) - Bash is the GNU Project's shell. It is an sh-compatible shell that incorporates useful features from the Korn shell (ksh) and C shell (csh). It is intended to conform to the IEEE POSIX P1003.2/ISO 9945.2.
+* wget, cut, cat, grep, gzip, mkdir and touch
+
+### Sequence data gathering
+* [NCBI SRA Toolkit](https://www.ncbi.nlm.nih.gov/sra/docs/toolkitsoft/) - The SRA Toolkit provides tools to download and access SRA data.
+
 ### Sequence data QC, Alignment and Processing
 * [ICGMC](https://bitbucket.org/rokhsar-lab/gbs-analysis) - The International Cassava Genetic Map Consortium (ICGMC) Pipeline for preprocessing of Illumina-sequenced data.
 
 ### Variant and Genotype Calling/Annotation/Filtering
+* [JAVA SE Development Kit](http://www.oracle.com/technetwork/pt/java/javase/index.html) -  The JDK includes tools useful for developing and testing programs written in the Java programming language and running on the Java platform.
 * [GATK](https://software.broadinstitute.org/gatk/best-practices) - Genome Analysis Toolkit
 Variant Discovery in High-Throughput Sequencing Data.
 * [VCFtools](https://vcftools.github.io) - A set of tools written in Perl and C++ for working with VCF files.
