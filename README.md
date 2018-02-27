@@ -154,7 +154,7 @@ ls -1 <absolute-path-to-data>/HIMP2_1/*.fastq.gz > <path-to-analysis>/HIMP-2/man
 
 To execute steps 1 & 2 in the pipeline, run:
 
-For the library/run HIMP1_1:
+For the library/run HIMP1_1 in the first experiment ``(HIMP-1)``:
 
 ```
 <path-to-project-install>/preprocessingSE.sh \
@@ -172,7 +172,7 @@ For the library/run HIMP1_1:
   --max-runtime 08:00:00 >& himp1_1.prepro.log &
 ```
 
-For the library/run HIMP2_1:
+For the library/run HIMP2_1 in the second experiment ``(HIMP-2)``:
 
 ```
 <path-to-project-install>/preprocessingSE.sh \
