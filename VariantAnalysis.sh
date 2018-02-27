@@ -3,11 +3,13 @@
 #$ -cwd 
 #$ -t 1-24
 
-ID=$SGE_TASK_ID
+## NEED TO BE MODIFIED BY THE ANALYST
+WORKDIR="<path-to-analysis>"                                          #need to setup; see README.md
+GENOME="<absolute-path-to-genome>/genome.fasta"                       #need to setup; see README.md
+PROBESET="<path-to-analysis>/share/Himpetiginosus.probeset.v0.3.bed"  #need to setup; see README.md
+##
 
-WORKDIR=""    #need to setup; see README.md
-GENOME=""     #need to setup; see README.md
-PROBESET=""   #need to setup; see README.md
+ID=$SGE_TASK_ID
 
 [ -d "${WORKDIR}/gatk" ] || mkdir ${WORKDIR}/gatk;
 
