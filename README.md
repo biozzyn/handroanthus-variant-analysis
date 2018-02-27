@@ -162,7 +162,7 @@ For the library/run HIMP1_1 in the first experiment ``(HIMP-1)``:
   --datadir <absolute-path-to-data> \
   --lib-name HIMP1_1 \
   --sample-file <path-to-analysis>/HIMP-1/samples.tsv \
-  --manifest <path-to-analysis>/HIMP-1//manifest.txt \
+  --manifest <path-to-analysis>/HIMP-1/manifest.txt \
   --target-analysis <path-to-IGGMC-analysis-tool> \
   --adaptor-fasta <path-to-analysis>/share/adaptors_illumina.fa \
   --ref-genome <absolute-path-to-genome>/genome.fasta \
