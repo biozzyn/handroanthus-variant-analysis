@@ -62,7 +62,7 @@ Assuming Git is correctly installed on your system, simply invoke:
 ```
 git clone https://github.com/biozzyn/handroanthus-variant-analysis.git
 ```
-The directory <path-to-your-local-install>/handroanthus-variant-analysis will be referred hereafter as ``<path-to-project-install>``
+The directory ``<path-to-your-local-install>/handroanthus-variant-analysis`` will be referred hereafter as ``<path-to-project-install>``
 
 ## Configuring your installation
 
@@ -108,7 +108,13 @@ This setup script uses ``wget`` program to download the sequence assembly and mo
 ### Additional resources
 
 Additional resources used by the pipeline are available to the analyst under the directory ``share`` in this project. Basically, it includes reference information about reliable SNPs for quality score recalibration using GATK VariantRecalibrator tool and also a reference database of SNP annotations generated using the SNPEff program. Detailed description on how these resources were generated is provided in the ``supplementary file S1 of the manuscript``.
-26
+
+To successful run the variant annotation step, the analysit should configure a new database entry for the SNPEff program. In our pipeline we called this database ``him``. To add a new genome to SNPEff the analyst can consult information [here](http://snpeff.sourceforge.net/SnpEff_manual.html#buildAddConfig). After add the new entry for the genome of *Handroanthus impetiginousus*
+
+```
+mkdir /path/to/snpEff/data/him
+cp <path-to-project-install>/share/snpEffectPredictor.bin /path/to/snpEff/data/him/
+```
 
 ## Running the pipeline
 
