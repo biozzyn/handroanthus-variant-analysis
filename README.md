@@ -87,11 +87,11 @@ This setup script uses the program ``fastq-dump`` whithin the NCBI SRA Toolkit p
                  <LIBRARY-NAME>_<RUN-ID>-<SAMPLE-NAME>_0.fastq.gz
 ```
 
-In our manuscript we described a first Capture-Seq library using fragments of DNA captured by 30,795 probes in the sample of 24 individuals of H. impetiginosus. These fragments were sequenced in a single sequencing run in one lane of a HiSeq2000 instrument, single-end mode. These sequence data will be available within a directory named HIMP1_1.
+In our manuscript we described a first Capture-Seq experiment named ``HIMP-1``. One Capture-Seq library was prepared from fragments of DNA captured by 30,795 probes in the sample of 24 individuals of H. impetiginosus. These fragments were sequenced in a single sequencing run in one lane of a HiSeq2000 instrument, single-end mode. These sequence data will be available within a directory named HIMP1_1.
 
-We described also a second Capture-Seq library for a partially replicate set using fragments of DNA captured by 14,135 probes out of the original set of 30,795 probeset.These fragments were sequenced in a single sequencing run in one lane of a HiSeq2000 instrument, single-end mode. These sequence data will be available within a directory named HIMP2_1.
+We described also a second Capture-Seq experiment named ``HIMP-2``. It was a partial replication of the previous experiment made to determine sensitivity and specificity of the DNA target enrichment system. A second Capture-Seq library was prepared from fragments of DNA captured by 14,135 probes out of the original set of 30,795 probeset in the same 24 individuals.These fragments were sequenced in a single sequencing run in one lane of a HiSeq2000 instrument, single-end mode. These sequence data will be available within a directory named HIMP2_1.
 
-After this step is completed two new directories ``HIMP1_1`` and ``HIMP2_1`` should be created each one containing 24 fastq files named as above.
+After successful completion of this step, two new directories ``HIMP1_1`` and ``HIMP2_1`` should be created, each one containing 24 fastq files named as above.
 
 ### Sequence assembly
 
@@ -135,7 +135,7 @@ cp <path-to-project-install>/share/snpEffectPredictor.bin /path/to/snpEff/data/h
 
 ## Running the pipeline
 
-To run the pipeline, the analyst should create a directory for the analysis. This directory should be accessible to the cluster. After that copy the whole directories HIMP-1 and HIMP-2 under the project files.
+To run the pipeline, the analyst should create two directories for the analysis of each experiment ``HIMP-1`` and ``HIMP-2``. This directory should be accessible to the cluster. To configure the experiments, the analyst should copy the whole directories HIMP-1 and HIMP-2 under the project files. We provide templates for the declaration of samples in each experiment ``(file: samples.tsv)``.
 
 ```
 cd <path-to-analysis>
