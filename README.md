@@ -40,11 +40,11 @@ SnpEff="~/my_tools/snpeff/snpEff.jar"
 
 So then when you want to run a Picard/GATK/SnpEff tool, you just need to call the jar by its shortcut, like this:
 
-``
+```
 java -jar $GATK -T <Toolname> [options]
 java -jar $PICARD <Toolname> [options]
 java -jar $SnpEff <Toolname> [options]
-``
+```
 
 More detailed information on how to setup necessary programs to run a variant analysis pipeline using GATK is accessible [here](https://gatkforums.broadinstitute.org/gatk/discussion/2899/howto-install-all-software-packages-required-to-follow-the-gatk-best-practices)
 
