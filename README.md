@@ -4,16 +4,16 @@ Targeted sequence capture coupled to high-throughput sequencing has become a pow
 
 Following the recent availability of a genome sequence assembly for the Pink Ipê tree (*Handroanthus impetiginosus*) that appeared in GigaScience Jounal (2018), we reported the development of a set of 24,751 capture probes for single nucleotide polymorphisms (SNPs) characterization and genotyping across 18,216 distinct loci, sampling more than 10 Mbp of the species genome. This system identifies nearly 200,000 SNPs located inside or in close proximity to almost 14,000 annotated protein-coding genes, generating quality genotypic data in populations spanning wide geographic distances across the species native range.
 
-This is the project containing all scripts used in the analyses developed for the "Design and evaluation of a sequence capture system for genome-wide SNP genotyping of a keystone Neotropical hardwood tree genome" paper to appear in DNA Research Journal (2018). The pipeline uses standard tools for variant analysis distributed under specific Open Source Licenses. It takes fastq data generated using RAPiD Genomics’ Capture-Seq service and the genome assembly sequence of *Handroanthus impetiginosus* as primary inputs. All data are available from NCBI's publicly repositories. 
+This is the project containing all scripts used in the analyses developed for the "Design and evaluation of a sequence capture system for genome-wide SNP genotyping of a keystone Neotropical hardwood tree genome" paper now accepted an to be published in the Jounal **DNA Research (2018)**. The pipeline uses standard tools for variant analysis distributed under specific Open Source Licenses. It takes fastq data generated using RAPiD Genomics’ (Gainsville, Florida, USA) Capture-Seq service and the genome assembly sequence of *Handroanthus impetiginosus* as primary inputs. All data are available from NCBI's publicly repositories. 
 
 Briefly, the pipeline guides the user through the following analysis:
 
 ```
-1. Fastq adaptor- and quality-trimming (automated)
-2. Short-read alignment (automated)
-3. Variant calling and genotyping (performed manually)
-4. Variant filtration (performed manually)
-5. Variant annotation (performed manually)
+1. Fastq adaptor- and quality-trimming
+2. Short-read alignment
+3. Variant calling and genotyping
+4. Variant filtration
+5. Variant annotation
 ```
 
 The pipeline relies on the use of a distributed memory compute cluster to enable the analyst to run large scale project with  large number of samples.
@@ -86,9 +86,9 @@ This setup script uses the program ``fastq-dump`` whithin the NCBI SRA Toolkit p
                  <LIBRARY-NAME>_<RUN-ID>-<SAMPLE-NAME>_0.fastq.gz
 ```
 
-In our manuscript we described a first Capture-Seq library using fragments of DNA captured by 30,795 probes in the sample of 24 individuals of H. impetiginosus. These fragments were sequenced in a single sequencing run in one lane of a HiSeq2000 instrument, single-end mode. These sequence data will be available whithin a directory named HIMP1_1.
+In our manuscript we described a first Capture-Seq library using fragments of DNA captured by 30,795 probes in the sample of 24 individuals of H. impetiginosus. These fragments were sequenced in a single sequencing run in one lane of a HiSeq2000 instrument, single-end mode. These sequence data will be available within a directory named HIMP1_1.
 
-We described also a second Capture-Seq library for a partially replicate set using fragments of DNA captured by 14,135 probes out of the original set of 30,795 probeset.These fragments were sequenced in a single sequencing run in one lane of a HiSeq2000 instrument, single-end mode. These sequence data will be available whithin a directory named HIMP2_1.
+We described also a second Capture-Seq library for a partially replicate set using fragments of DNA captured by 14,135 probes out of the original set of 30,795 probeset.These fragments were sequenced in a single sequencing run in one lane of a HiSeq2000 instrument, single-end mode. These sequence data will be available within a directory named HIMP2_1.
 
 After this step is completed two new directories ``HIMP1_1`` and ``HIMP2_1`` should be created each one containing 24 fastq files named as above.
 
@@ -125,7 +125,7 @@ cd <path-to-analysis>/share
 gunzip *.gz
 ```
 
-To successful run the variant annotation step, the analysit should configure a new database entry for the SNPEff program. In our pipeline we called this database ``him``. To add a new genome to SNPEff the analyst can consult information [here](http://snpeff.sourceforge.net/SnpEff_manual.html#buildAddConfig). After add the new entry for the genome of *Handroanthus impetiginousus*
+To successful run the variant annotation step, the analysit should configure a new database entry for the SNPEff program. In our pipeline we called this database ``him``. To add a new genome to SNPEff the analyst can consult information [here](http://snpeff.sourceforge.net/SnpEff_manual.html#buildAddConfig). After adding the new entry for the genome of *Handroanthus impetiginousus*
 
 ```
 mkdir /path/to/snpEff/data/him
@@ -134,7 +134,7 @@ cp <path-to-project-install>/share/snpEffectPredictor.bin /path/to/snpEff/data/h
 
 ## Running the pipeline
 
-To run the pipeline, the analyst shoud create a directory for the analysis. This directory should be accessible to the cluster. After that copy the the whole directories HIMP-1 and HIMP-2 under the project files.
+To run the pipeline, the analyst should create a directory for the analysis. This directory should be accessible to the cluster. After that copy the whole directories HIMP-1 and HIMP-2 under the project files.
 
 ```
 cd <path-to-analysis>
@@ -189,7 +189,7 @@ For the library/run HIMP2_1:
   --max-runtime 08:00:00 >& himp2_1.prepro.log &
 ```
 
-If all the analysis ran successfully the analysist shoud found BAM formatted files under the ``<path-to-analysis>/HIMP-1`` and ``<path-to-analysis>/HIMP-2`` directories. These files contain the read to genome alignments that should be used as input to the variant analysis steps in the pipeline.
+If all the analysis ran successfully the analysist shoud find BAM formatted files under the ``<path-to-analysis>/HIMP-1`` and ``<path-to-analysis>/HIMP-2`` directories. These files contain the read to genome alignments that should be used as input to the variant analysis steps in the pipeline.
 
 ### Variant Calling and Genotyping (performed manually)
 
