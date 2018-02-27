@@ -277,17 +277,14 @@ Variant Discovery in High-Throughput Sequencing Data.
 
 * We thank the anonymous reviewers for their careful reading of our manuscript and their insightful suggestions.
 
-## Additional resources
+## Additional reading
 
 Genome assembly of *Handroanthus impetiginosus*:
-```
+
 * Silva-Junior OB, Novaes E, Grattapaglia D, Collevatti R. Genome assembly of the Pink Ipê (Handroanthus impetiginosus, Bignoniaceae), a highly valued, ecologically keystone Neotropical timber forest tree. GigaScience, Volume 7, Issue 1, 1 January 2018, Pages 1–16.
-```
+
 Description of RAPiD Genomics’ Capture-Seq can be found in:
 
-```
 * Neves LG, Davis JM, Barbazuk WB, Kirst M. Whole-exome targeted sequencing of the uncharacterized pine genome. The Plant Journal (2013) 75, 146–156.
 
 * http://www.rapid-genomics.com/wp-content/uploads/2014/05/Capture-Seq-RAPiD-Genomics.pdf
-```
-
