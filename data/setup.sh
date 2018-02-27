@@ -49,7 +49,7 @@ if [[ ! -e "${DATADIR}/data.complete" ]]; then
 	library_ID=`echo $library_ID | awk '{split($1,lib,"-"); print lib[1]""lib[2]}'`
 	echo "${FQDUMP} --gzip -Z -A $accession > ${DATADIR}/HIMP2_1/HIMP2_1-${library_ID}_0.fastq.gz";
     done >>data.batch && \
-       	${IGGMC}/scripts/qbatch submit -n data-HIMP -q normal.c -Wj -R 1 ${DATADIR}/data.batch && \
+       	${IGGMC}/scripts/qbatch submit -n data-HIMP -q normal.c -Wj -R 1 --max-runtime 12:00:00 ${DATADIR}/data.batch && \
      	${TOUCH} data.complete;
 
 else
