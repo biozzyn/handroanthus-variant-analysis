@@ -22,8 +22,6 @@ Analysis 1 & 2 are perfomed in an automated way with a modified version of the s
 
 Analyses 3 - 5 are perfomed manually and the analyst should consult the Variant Calling and Genotyping section provided herein for step-by-step analysis instructions. Tips on assessing data quality and choosing thresholds are provided in the supplementary file S1 of the manuscript.
 
-Additional resources used by the pipeline are available to the analyst under the directory ``share`` in this project. Basically, it includes reference information about reliable SNPs for quality score recalibration using GATK VariantRecalibrator tool and also a reference database of SNP annotations generated using the SNPEff program. Detailed description on how these resources were generated is provided in the ``supplementary file S1 of the manuscript``.
-
 # Getting Started
 
 Included pipeline scripts require a successful install of various open-source tools used for variant analysis. See Dependencies herein. Additionaly, the analyst will need to install the scripts provided by the International Cassava Genetic Map Consortium (ICGMC) available [here](https://bitbucket.org/rokhsar-lab/gbs-analysis).
@@ -107,6 +105,11 @@ bash setup.sh
 
 This setup script uses ``wget`` program to download the sequence assembly and modify the sequence header for further processing. There should be a file named ``genome.fasta`` after this step is completed.
 
+### Additional resources
+
+Additional resources used by the pipeline are available to the analyst under the directory ``share`` in this project. Basically, it includes reference information about reliable SNPs for quality score recalibration using GATK VariantRecalibrator tool and also a reference database of SNP annotations generated using the SNPEff program. Detailed description on how these resources were generated is provided in the ``supplementary file S1 of the manuscript``.
+26
+
 ## Running the pipeline
 
 To run the pipeline, the analyst shoud create a directory for the analysis. This directory should be accessible to the cluster. After that copy the the whole directories HIMP-1 and HIMP-2 under the project files.
@@ -123,6 +126,13 @@ The analysist should prepare the manifest file ``manifest.txt`` to reflect the a
 ls -1 <absolute-path-to-data>/HIMP1_1/*.fastq.gz > <path-to-analysis>/HIMP-1/manifest.txt
 ls -1 <absolute-path-to-data>/HIMP2_1/*.fastq.gz > <path-to-analysis>/HIMP-2/manifest.txt
 ```
+The shared resources should be available to the pipeline in the directory set up for the analysis
+
+```
+cp -r <path-to-project-install>/share <path-to-analysis>/
+cd <path-to-analysis>/share
+gunzip *.gz
+```
 
 ### Preprocessing (automated step using [IGGMC](https://bitbucket.org/rokhsar-lab/gbs-analysis))
 
@@ -131,7 +141,7 @@ To execute steps 1 & 2 in the pipeline, run:
 For the library/run HIMP1_1:
 
 ```
-<path-to-project-install>/preprocessing.sh \
+<path-to-project-install>/preprocessingSE.sh \
   --workdir <path-to-analysis>/HIMP-1 \
   --datadir <absolute-path-to-data> \
   --lib-name HIMP1_1 \
@@ -149,7 +159,7 @@ For the library/run HIMP1_1:
 For the library/run HIMP2_1:
 
 ```
-<path-to-project-install>/preprocessing.sh \
+<path-to-project-install>/preprocessingSE.sh \
   --workdir <path-to-analysis>/HIMP-2 \
   --datadir <absolute-path-to-data> \
   --lib-name HIMP2_1 \
