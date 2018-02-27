@@ -148,7 +148,7 @@ For the library/run HIMP1_1:
   --sample-file <path-to-analysis>/HIMP-1/samples.tsv \
   --manifest <path-to-analysis>/HIMP-1//manifest.txt \
   --target-analysis <path-to-IGGMC-analysis-tool> \
-  --adaptor-fasta <path-to-project-install>/share/adaptors_illumina.fa \
+  --adaptor-fasta <path-to-analysis>/share/adaptors_illumina.fa \
   --ref-genome <absolute-path-to-genome>/genome.fasta \
   --sequence-source Handroanthus_impetiginosus \
   --flowcell-id C2THMACXX \
@@ -166,7 +166,7 @@ For the library/run HIMP2_1:
   --sample-file <path-to-analysis>/HIMP-2/samples.tsv \
   --manifest <path-to-analysis>/HIMP-2/manifest.txt \
   --target-analysis <path-to-IGGMC-analysis-tool> \
-  --adaptor-fasta <path-to-project-install>/share/adaptors_illumina.fa \
+  --adaptor-fasta <path-to-analysis>/share/adaptors_illumina.fa \
   --ref-genome <absolute-path-to-genome>/genome.fasta \
   --sequence-source Handroanthus_impetiginosus \
   --flowcell-id C2Y14ACXX \
