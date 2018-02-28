@@ -260,7 +260,7 @@ A final set of SNP calls with genotypes is then provided to the analyst. This se
 
 ### Gnu/Linux shell and utility softwares
 * [Bash](https://www.gnu.org/software/bash/) - Bash is the GNU Project's shell. It is an sh-compatible shell that incorporates useful features from the Korn shell (ksh) and C shell (csh). It is intended to conform to the IEEE POSIX P1003.2/ISO 9945.2.
-* wget, cut, cat, grep, gzip, mkdir and touch
+* wget, cut, cat, zcat, sed, grep, gzip, mkdir and touch
 
 ### Sequence data gathering
 * [NCBI SRA Toolkit](https://www.ncbi.nlm.nih.gov/sra/docs/toolkitsoft/) - The SRA Toolkit provides tools to download and access SRA data.
