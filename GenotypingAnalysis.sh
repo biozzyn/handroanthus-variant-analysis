@@ -26,7 +26,7 @@ done
 java -jar -Xmx5g -Xms5g ${GATK} \
   -T GenotypeGVCFs \
   -R ${GENOME} \
-  --heterozygosity 0.015 \
+  --heterozygosity 0.018 \
   --max_alternate_alleles 12 \
   -L ${PROBESET} \
   -o ${WORKDIR}/genotyping/${spp}.raw.vcf \
