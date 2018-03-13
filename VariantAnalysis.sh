@@ -34,6 +34,6 @@ java -jar -Xmx5g -Xms5g ${GATK} \
  -o ${WORKDIR}/gatk/${SNAME[${ID}]}.g.vcf \
  -R $GENOME \
  -ERC GVCF \
- --heterozygosity 0.015 \
+ --heterozygosity 0.018 \
  -L ${PROBESET} \
  --variant_index_type LINEAR --variant_index_parameter 128000
